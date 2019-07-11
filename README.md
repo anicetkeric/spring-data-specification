@@ -17,3 +17,21 @@ public interface BaseRepository<T, ID extends Serializable> extends JpaRepositor
 } 
 ```
 
+Implement specification in Service class
+```java
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Override
+    public Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable) {
+        return employeeRepository.findAll(specs, pageable);
+    }
+
+}
+```
+
+
+
