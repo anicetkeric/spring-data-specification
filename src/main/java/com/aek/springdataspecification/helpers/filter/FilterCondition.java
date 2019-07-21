@@ -2,7 +2,7 @@ package com.aek.springdataspecification.helpers.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -16,14 +16,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class FilterCondition {
 
-    private FilterOperation operator; //filter operator in list enum
-
-    private Object value; //value for search
-
-    private String field; //property for search
-
+    private String field;
+    private FilterOperation operator;
+    private Object value;
 
 }

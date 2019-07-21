@@ -22,7 +22,15 @@ public enum FilterOperation {
     NOT_IN						("nin"),
     BETWEEN						("btn"),
     CONTAINS					("like"),
+    NOT_CONTAINS					("notLike"),
+    IS_NULL					("isnull"),
+    IS_NOT_NULL					("isnotnull"),
+    START_WITH					("startwith"),
+    END_WITH					("endwith"),
+    IS_EMPTY					("isempty"),
+    IS_NOT_EMPTY				("isnotempty"),
     JOIN					("jn");
+
 
     private String value;
 
