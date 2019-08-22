@@ -1,8 +1,23 @@
+/*
+ * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
 package com.aek.springdataspecification.service;
 
 import com.aek.springdataspecification.entities.Employee;
 import com.aek.springdataspecification.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -19,8 +34,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     public Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable) {
@@ -28,7 +46,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public Page<Employee> findAllPaginate(Pageable pageable) {
-
         return employeeRepository.findAll(pageable);
     }
 }

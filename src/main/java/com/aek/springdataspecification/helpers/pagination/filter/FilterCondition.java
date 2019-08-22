@@ -14,23 +14,29 @@
  *
  */
 
-package com.aek.springdataspecification.service;
+package com.aek.springdataspecification.helpers.pagination.filter;
 
-import com.aek.springdataspecification.entities.Employee;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 /**
- * <h2>EmployeeService</h2>
+ * <h2>FilterCondition</h2>
  *
- * @author aek - macintoshhd
- * createdAt : 2019-07-11 08:20
+ * @author macintoshhd
+ * createdAt : 2019-07-06 09:17
  * <p>
- * Description: Employee Service Class
+ * Description: Filter Condition Class
  */
-public interface EmployeeService {
+@Setter
+@Getter
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class FilterCondition {
 
-    Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable);
-    Page<Employee> findAllPaginate(Pageable pageable);
+    private String field;
+    private FilterOperation operator;
+    private Object value;
+
 }
