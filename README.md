@@ -5,7 +5,8 @@ Spring Data JPA – Dynamically build queries using JPA Criteria API/Specificati
 ###
 * Spring Boot 2.1.6
 * Lombok
-* Java8
+* Java 8
+* H2 database
 
 ### Features
 
