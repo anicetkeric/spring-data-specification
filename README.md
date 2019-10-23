@@ -1,6 +1,12 @@
 # spring-data-specification
 Spring Data JPA – Dynamically build queries using JPA Criteria API/Specification
 
+
+###
+* Spring Boot 2.1.6
+* Lombok
+* Java8
+
 ### Features
 
 * Order By direction and order By ColumnsName
