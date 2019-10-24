@@ -2,6 +2,12 @@
 Spring Data JPA – Dynamically build queries using JPA Criteria API/Specification
 
 
+
+## Prerequisites
+Ensure you have this installed before proceeding further
+- Java 8
+- Maven 3.3.9+
+- Spring Tool Suite™ (STS) or others
 ###
 * Spring Boot 2.1.6
 * Lombok
