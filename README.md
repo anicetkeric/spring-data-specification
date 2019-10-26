@@ -19,6 +19,8 @@ Ensure you have this installed before proceeding further
 * Support custom specification.
 * Custom Pagination response
 
+Department ---> Employee
+
 Create a base Repository class should extends from two super class **JpaRepository** and **JpaSpecificationExecutor**.
 
 ```java
