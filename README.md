@@ -35,8 +35,12 @@ Implement specification in Service class
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+  
+   private final EmployeeRepository employeeRepository;
+    
+   public EmployeeServiceImpl(EmployeeRepository employeeRepo){
+    this.employeeRepository = employeeRepo;
+   }
 
     @Override
     public Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable) {
