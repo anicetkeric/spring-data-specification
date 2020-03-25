@@ -32,5 +32,6 @@ import org.springframework.data.jpa.domain.Specification;
 public interface EmployeeService {
 
     Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable);
+
     Page<Employee> findAllPaginate(Pageable pageable);
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2020. @aek - (anicetkeric@gmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -16,8 +16,9 @@
 
 package com.aek.springdataspecification.repository;
 
-import com.aek.springdataspecification.entities.Employee;
+import com.aek.springdataspecification.entities.Department;
 
-public interface EmployeeRepository extends BaseRepository<Employee, Long> {
+
+public interface DepartmentRepository extends BaseRepository<Department, Long> {
 
 }

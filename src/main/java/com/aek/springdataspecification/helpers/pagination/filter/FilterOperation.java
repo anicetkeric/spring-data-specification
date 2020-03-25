@@ -28,24 +28,24 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum FilterOperation {
 
-    EQUAL						("eq"),
-    NOT_EQUAL					("neq"),
-    GREATER_THAN				("gt"),
-    GREATER_THAN_OR_EQUAL_TO	("gte"),
-    LESS_THAN					("lt"),
-    LESSTHAN_OR_EQUAL_TO		("lte"),
-    IN							("in"),
-    NOT_IN						("nin"),
-    BETWEEN						("btn"),
-    CONTAINS					("like"),
-    NOT_CONTAINS					("notLike"),
-    IS_NULL					("isnull"),
-    IS_NOT_NULL					("isnotnull"),
-    START_WITH					("startwith"),
-    END_WITH					("endwith"),
-    IS_EMPTY					("isempty"),
-    IS_NOT_EMPTY				("isnotempty"),
-    JOIN					("jn");
+    EQUAL("eq"),
+    NOT_EQUAL("neq"),
+    GREATER_THAN("gt"),
+    GREATER_THAN_OR_EQUAL_TO("gte"),
+    LESS_THAN("lt"),
+    LESSTHAN_OR_EQUAL_TO("lte"),
+    IN("in"),
+    NOT_IN("nin"),
+    BETWEEN("btn"),
+    CONTAINS("like"),
+    NOT_CONTAINS("notLike"),
+    IS_NULL("isnull"),
+    IS_NOT_NULL("isnotnull"),
+    START_WITH("startwith"),
+    END_WITH("endwith"),
+    IS_EMPTY("isempty"),
+    IS_NOT_EMPTY("isnotempty"),
+    JOIN("jn");
 
 
     private String value;
