@@ -16,6 +16,7 @@
 
 package com.aek.springdataspecification.helpers.pagination.filter;
 
+import com.aek.springdataspecification.helpers.pagination.SearchFilters;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,7 +27,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * <h2>FilterSpecifications</h2>
@@ -49,13 +49,13 @@ public class FilterSpecifications<T> implements Specification<T> {
     }
 
 
-    public void addCondition(List<FilterCondition> lstAndFieldConditions, List<FilterCondition> lstOrFieldConditions) {
+    public void addCondition(SearchFilters searchFilters) {
 
-        if (lstAndFieldConditions != null && !lstAndFieldConditions.isEmpty()) {
-            filterAndConditions.addAll(lstAndFieldConditions);
+        if (searchFilters != null && !searchFilters.getFilterAndConditions().isEmpty()) {
+            filterAndConditions.addAll(searchFilters.getFilterAndConditions());
         }
-        if (lstOrFieldConditions != null && !lstOrFieldConditions.isEmpty()) {
-            filterOrConditions.addAll(lstOrFieldConditions);
+        if (searchFilters != null && !searchFilters.getFilterOrConditions().isEmpty()) {
+            filterOrConditions.addAll(searchFilters.getFilterOrConditions());
         }
     }
 
@@ -138,7 +138,7 @@ public class FilterSpecifications<T> implements Specification<T> {
                 p = criteriaBuilder.lessThanOrEqualTo(root.get(condition.getField()).as(LocalDateTime.class), stringToLocalDateTime((String) condition.getValue()));
                 break;
             case JOIN:
-                p = criteriaBuilder.equal(root.join(condition.getField()).get("id"), UUID.fromString((String) condition.getValue()));
+                 p = criteriaBuilder.equal(root.join(condition.getField()).get("id"), condition.getValue());
                 break;
             default:
                 p = criteriaBuilder.equal(root.get(condition.getField()), condition.getValue());
@@ -147,7 +147,9 @@ public class FilterSpecifications<T> implements Specification<T> {
     }
 
 
-    private static LocalDateTime stringToLocalDateTime(String dateString) {
+    private LocalDateTime stringToLocalDateTime(String dateString) {
         return LocalDateTime.parse(dateString, DateTimeFormatter.ISO_DATE_TIME);
     }
+
+
 }

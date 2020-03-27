@@ -16,8 +16,6 @@
 
 package com.aek.springdataspecification.helpers.pagination.filter;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,16 +23,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * <h2>FiltersBuilder</h2>
+ * <h2>FilterBuilder</h2>
  *
  * @author aek - macintoshhd
  * createdAt : 2020-03-25 18:52
  * <p>
  * Description:
  */
-public class FiltersBuilder {
+public class FilterBuilder {
 
-    private FiltersBuilder(){
+    private FilterBuilder(){
 
     }
 
@@ -44,22 +42,23 @@ public class FiltersBuilder {
                 .collect(Collectors.toList());
     }
 
+
     public static List<FilterCondition> getFilters(String searchCriteria) {
 
         List<FilterCondition> filters = new ArrayList<>();
-
 
         if (searchCriteria != null && !searchCriteria.isEmpty()) {
 
             List<String> values = split(searchCriteria, "&");
             if (!values.isEmpty()) {
                 values.forEach(x -> {
-                    List<String> fil = split(x, "\\|");
-                    filters.add(new FilterCondition(fil.get(0), FilterOperation.fromValue(fil.get(1)), fil.get(2)));
+                    List<String> filter = split(x, "\\|");
+
+                    if(FilterOperation.fromValue(filter.get(1)) != null){
+                        filters.add(new FilterCondition(filter.get(0), FilterOperation.fromValue(filter.get(1)), filter.get(2)));
+                    }
 
                 });
-
-
             }
         }
 
@@ -67,25 +66,7 @@ public class FiltersBuilder {
 
     }
 
-    public static PageRequest getPageable(int size, int page, List<String> orderColumn, Sort.Direction sortDirection) {
 
 
-        int pageSize = (size == 0) ? 20 : size;
-        int curentPage = (page <= 0) ? 1 : page;
-
-        if (orderColumn.isEmpty()) {
-            return PageRequest.of((curentPage - 1), pageSize);
-        } else {
-            if (sortDirection.equals(Sort.Direction.DESC) || sortDirection.equals(Sort.Direction.ASC)) {
-
-                Sort sort = new Sort(sortDirection, orderColumn);
-                return PageRequest.of((curentPage - 1), pageSize, sort);
-            } else {
-                throw new IllegalArgumentException(String.format("Value for param 'order' is not valid : %s , must be 'asc' or 'desc'", sortDirection));
-            }
-
-        }
-
-    }
 
 }
