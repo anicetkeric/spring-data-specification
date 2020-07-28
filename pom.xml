@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <liquibase.version>4.0.0</liquibase.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <!-- Inherited version from Spring Boot can't be used because of regressions -->
+            <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
 

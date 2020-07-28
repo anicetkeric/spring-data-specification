@@ -24,10 +24,10 @@ import javax.persistence.Id;
 /**
  * <h2>Department</h2>
  *
- * @author aek - macintoshhd
+ * @author aek
  * createdAt : 2019-07-07 15:44
  * <p>
- * Description: Department class
+ * Description: Department entity class
  */
 @Entity
 @Getter

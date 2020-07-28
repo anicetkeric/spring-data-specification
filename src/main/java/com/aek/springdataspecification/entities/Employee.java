@@ -26,7 +26,7 @@ import javax.persistence.ManyToOne;
 /**
  * <h2>Employee</h2>
  *
- * @author aek - macintoshhd
+ * @author aek
  * createdAt : 2019-07-07 15:44
  * <p>
  * Description:
