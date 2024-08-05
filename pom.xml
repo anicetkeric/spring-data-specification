@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.aek</groupId>
     <artifactId>spring-data-specification</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>spring-data-specification</name>
     <description>Spring Data JPA specification custom</description>
 
