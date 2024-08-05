@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2019. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -23,11 +23,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.io.Serializable;
 
 /**
- * @author AEK
+ * @author boottech
  * Base Repository interface
  */
 @NoRepositoryBean
 public interface BaseRepository<T, D extends Serializable> extends JpaRepository<T, D>, JpaSpecificationExecutor<T> {
-
-
 }

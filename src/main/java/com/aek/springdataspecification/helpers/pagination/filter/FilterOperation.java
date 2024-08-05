@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2019. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -16,16 +16,21 @@
 
 package com.aek.springdataspecification.helpers.pagination.filter;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Arrays;
 
 /**
  * <h2>FilterOperation</h2>
  *
- * @author macintoshhd
- * createdAt : 2019-07-06 09:22
+ * @author boottech
  * <p>
  * Description:
  */
+@Getter
+@AllArgsConstructor
 public enum FilterOperation {
 
     EQUAL("eq"),
@@ -33,7 +38,7 @@ public enum FilterOperation {
     GREATER_THAN("gt"),
     GREATER_THAN_OR_EQUAL_TO("gte"),
     LESS_THAN("lt"),
-    LESSTHAN_OR_EQUAL_TO("lte"),
+    LESS_THAN_OR_EQUAL_TO("lte"),
     IN("in"),
     NOT_IN("nin"),
     BETWEEN("btn"),
@@ -47,28 +52,12 @@ public enum FilterOperation {
     IS_NOT_EMPTY("isnotempty"),
     JOIN("jn");
 
+    private final String value;
 
-    private String value;
-
-    FilterOperation(String value) {
-        this.value = value;
+    public static FilterOperation fromValue(@NotNull String value) {
+        return Arrays.stream(FilterOperation.values())
+                .filter(val -> val.getValue().equalsIgnoreCase(value))
+                .findFirst()
+                .orElse(null);
     }
-
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FilterOperation fromValue(String value) {
-        for (FilterOperation op : FilterOperation.values()) {
-
-            //Case insensitive operation name
-            if (String.valueOf(op.value).equalsIgnoreCase(value)) {
-                return op;
-            }
-        }
-        return null;
-    }
-
 }

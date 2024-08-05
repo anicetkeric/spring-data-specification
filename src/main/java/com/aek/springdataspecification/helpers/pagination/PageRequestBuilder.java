@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2019. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -18,14 +18,15 @@ package com.aek.springdataspecification.helpers.pagination;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * <h2>PageRequestBuilder</h2>
  *
- * @author aek - macintoshhd
- * createdAt : 2019-07-06 16:19
+ * @author boottech
  * <p>
  * Description: Page Request Builder class. custom pageable
  */
@@ -39,22 +40,20 @@ public class PageRequestBuilder {
 
     public static PageRequest getPageable(int size, int page, List<String> orderColumn, Sort.Direction sortDirection) {
 
-
         int pageSize = (size == 0) ? DEFAULT_SIZE_PAGE : size;
-        int curentPage = (page <= 0) ? 1 : page;
+        int currentPage = (page <= 0) ? 1 : page;
 
-        if (orderColumn.isEmpty()) {
-            return PageRequest.of((curentPage - 1), pageSize);
-        } else {
-            if (sortDirection.equals(Sort.Direction.DESC) || sortDirection.equals(Sort.Direction.ASC)) {
-
-                Sort sort = new Sort(sortDirection, orderColumn);
-                return PageRequest.of((curentPage - 1), pageSize, sort);
-            } else {
-                throw new IllegalArgumentException(String.format("Value for param 'order' is not valid : %s , must be 'asc' or 'desc'", sortDirection));
-            }
-
+        if (CollectionUtils.isEmpty(orderColumn)) {
+            return PageRequest.of((currentPage - 1), pageSize);
         }
 
+        if (sortDirection.equals(Sort.Direction.DESC) || sortDirection.equals(Sort.Direction.ASC)) {
+            List<Sort.Order> orderList = new ArrayList<>();
+            orderColumn.forEach(col -> orderList.add(new Sort.Order(sortDirection, col)));
+
+            return PageRequest.of((currentPage - 1), pageSize, Sort.by(orderList));
+        }
+
+        throw new IllegalArgumentException(String.format("Value for param 'order' is not valid : %s , must be 'asc' or 'desc'", sortDirection));
     }
 }

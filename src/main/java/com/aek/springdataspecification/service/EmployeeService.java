@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2019. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -24,8 +24,7 @@ import org.springframework.data.jpa.domain.Specification;
 /**
  * <h2>EmployeeService</h2>
  *
- * @author aek - macintoshhd
- * createdAt : 2019-07-11 08:20
+ * @author
  * <p>
  * Description: Employee Service Class
  */

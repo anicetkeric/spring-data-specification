@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2020. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -17,45 +17,46 @@
 package com.aek.springdataspecification.helpers.pagination.filter;
 
 
+import lombok.experimental.UtilityClass;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
  * <h2>FilterBuilder</h2>
  *
- * @author aek - macintoshhd
+ * @author
  * createdAt : 2020-03-25 18:52
  * <p>
  * Description:
  */
+@UtilityClass
 public class FilterBuilder {
 
-    private FilterBuilder(){
 
-    }
-
-    private static List<String> split(String search, String delimiter) {
-        return Stream.of(search.split(delimiter))
-                //.map (elem -> new String(elem))
-                .collect(Collectors.toList());
+    private List<String> split(String search, String delimiter) {
+        return Stream.of(search.split(delimiter)).toList();
     }
 
 
-    public static List<FilterCondition> getFilters(String searchCriteria) {
+    public List<FilterCondition> getFilters(String searchCriteria) {
 
         List<FilterCondition> filters = new ArrayList<>();
 
-        if (searchCriteria != null && !searchCriteria.isEmpty()) {
+         if (StringUtils.hasLength(searchCriteria)) {
 
-            List<String> values = split(searchCriteria, "&");
-            if (!values.isEmpty()) {
+            List<String> values = split(searchCriteria, ",");
+             if (!CollectionUtils.isEmpty(values)) {
                 values.forEach(x -> {
-                    List<String> filter = split(x, "\\|");
+                    List<String> filter = split(x, ";");
 
-                    if(FilterOperation.fromValue(filter.get(1)) != null){
-                        filters.add(new FilterCondition(filter.get(0), FilterOperation.fromValue(filter.get(1)), filter.get(2)));
+                    var operator = FilterOperation.fromValue(filter.get(1));
+                    if (Objects.nonNull(operator)) {
+                        filters.add(new FilterCondition(filter.get(0), operator, filter.get(2)));
                     }
 
                 });

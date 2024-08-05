@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020. @aek - (anicetkeric@gmail.com)
+ * Copyright (c) 2020. @boottech - (boottechnologies@hotmail.com)
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -20,5 +20,4 @@ import com.aek.springdataspecification.entities.Department;
 
 
 public interface DepartmentRepository extends BaseRepository<Department, Long> {
-
 }

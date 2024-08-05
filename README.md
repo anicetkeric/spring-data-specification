@@ -6,9 +6,9 @@ Spring Data JPA – Dynamically build queries using JPA Criteria API/Specificati
 ## Prerequisites
 Ensure you have this installed before proceeding further
 
-* Spring Boot 2.1.6
+* Spring Boot 3.3.2
 * Lombok
-* Java 8
+* Java 21
 * H2 database
 * Spring Tool Suite™ (STS) or others
 
@@ -48,6 +48,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 }
+```
+Endpoint demo
+```
+GET http://localhost:8080/api/employee/search?page=1&size=10&and=firstName;eq;Steven
+GET http://localhost:8080/api/employee/search?page=1&size=10&or=firstName;startwith;K,firstName;like;ir
+GET http://localhost:8080/api/employee/search?page=1&size=10&or=firstName;startwith;K,firstName;like;on
 ```
 
 
