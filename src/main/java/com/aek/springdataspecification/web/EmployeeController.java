@@ -62,7 +62,7 @@ public class EmployeeController {
         FilterSpecifications<Employee> specifications = new FilterSpecifications<>(searchFilters);
 
         var pg = employeeService.findAllSpecification(specifications, pageable);
-        resp.setPageStats(pg, pg.getContent());
+        resp.setPage(pg, pg.getContent());
         return new ResponseEntity<>(
                 resp,
                 HttpStatus.OK);
@@ -83,7 +83,7 @@ public class EmployeeController {
 
 
         var pg = employeeService.findAllSpecification(specifications, pageable);
-        resp.setPageStats(pg, pg.getContent());
+        resp.setPage(pg, pg.getContent());
         return new ResponseEntity<>(
                 resp,
                 HttpStatus.OK);
